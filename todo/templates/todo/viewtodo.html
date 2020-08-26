@@ -1,0 +1,67 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5"
+    style="text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(88, 88, 88);
+    font-weight: 900;
+    letter-spacing: 2px;
+    ">
+        <div class="col-md-5">
+            <h1>Create New Todo</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5" style="
+                                    font-family: 'Roboto', sans-serif;
+                                    color: rgb(88, 88, 88);
+        ">
+            {% if error %}
+                <div class="alert alert-danger" role="alert" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88);">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group" style="letter-spacing: 3px;font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88);">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" value="{{ todo.title }}" required>
+                </div>
+                <div class="form-group" style="letter-spacing: 3px; font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88);">
+                    <label for="memo">Details</label>
+                    <textarea name="memo" rows="5" class="form-control" id="memo" >{{ todo.memo }}</textarea>
+                </div>
+                <div class="form-group form-check" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88); text-align:center; font-weight:700; letter-spacing: 3px; padding: 5px 10px;">
+                    <input type="checkbox" name="important" class="form-check-input" id="important" {% if todo.important %}checked{% endif %}>
+                    <label class="form-check-label" for="important">Important</label>
+                </div>
+                <div style="font-family: 'Roboto', sans-serif;
+                            color: rgb(88, 88, 88);
+                            text-align: center;
+                            letter-spacing: 3px;
+                            margin: 5px 0px 40px 0px;
+                ">
+                    <button style="margin: 0px 5px;" type="submit" class="btn btn-primary">Save</button>
+                    <button style="margin: 0px 5px;" type="button" class="btn btn-success" onclick="$('#complete').click()">Complete</button>
+                    <button style="margin: 0px 5px;" type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    {% if todo.datecompleted is None %}
+        <form style='display: none;' method="POST" action="{% url 'completetodo' todo.id %}">
+            {% csrf_token %}
+            <button id="complete" type="submit">Complete</button>
+        </form>
+    {% endif %}
+    <form style='display: none;' method="POST" action="{% url 'deletetodo' todo.id %}">
+        {% csrf_token %}
+        <button id="delete" type="submit">Delete</button>
+    </form>
+{% endblock %}

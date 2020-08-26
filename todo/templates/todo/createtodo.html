@@ -1,0 +1,53 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5"
+            style="text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: rgb(88, 88, 88);
+
+            "
+        >
+            <h2 style="font-weight: 900;letter-spacing: 2.5px;">Create New Todo</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div
+                style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88);
+                text-align: center;
+                letter-spacing: 2px;
+                "
+                class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88); letter-spacing: 2px;">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" required >
+                </div>
+                <div class="form-group" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88); letter-spacing: 2px;">
+                    <label for="memo">Details</label>
+                    <textarea name="memo" class="form-control" id="memo" ></textarea>
+                </div>
+                <div class="form-group form-check" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88); letter-spacing: 2px; text-align: center; padding: 10px; font-weight: 600;">
+                    <input type="checkbox" name="important" class="form-check-input" id="important">
+                    <label class="form-check-label" for="important">Important</label>
+                </div>
+                <div style="margin: 10px 0px 60px 0px;">
+                    <button type="submit" class="btn btn-info btn-lg btn-block" style="font-family: 'Roboto', sans-serif;
+                color: rgb(88, 88, 88); letter-spacing: 2px;">Save Todo</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+{% endblock %}

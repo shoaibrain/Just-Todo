@@ -1,0 +1,66 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if todos %}
+                 <h1
+                 style="font-family: 'Roboto', sans-serif;
+                 color: rgb(88, 88, 88);
+                 text-align: center;
+                 letter-spacing: 3px;
+                 "
+                 >{{ todos.count }} Current Todo{{ todos.count|pluralize }}</h1>
+            {% else %}
+                           <h1
+                           style="font-family: 'Roboto', sans-serif;
+                 color: rgb(88, 88, 88);
+                 text-align: center;
+                 letter-spacing: 3px;
+                 "
+                           >Current Todos</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if todos %}
+            <div class="list-group"
+            style="padding: 30px;"
+            >
+                {% for todo in todos %}
+                    <a 
+                    style="font-family: 'Roboto', sans-serif;
+                 color: rgb(88, 88, 88);
+                 text-align: center;
+                 letter-spacing: 1.5px;
+                 "
+                    href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action{% if todo.important %} list-group-item-danger{% endif %}"><b>{{ todo.title }}</b>{% if todo.memo %} - {{ todo.memo|truncatechars:20 }}{% endif %}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2
+                style="font-family: 'Roboto', sans-serif;
+                 color: rgb(88, 88, 88);
+                 text-align: center;
+                 letter-spacing: 2px;
+                 "
+                >Looks like you don't have any pending todos! <br> Great Work! </h2>
+            <br>
+            <div style="margin: 20px 0px 60px 0px;">
+                <a
+                style="font-family: 'Roboto', sans-serif;
+                     color: rgb(88, 88, 88);
+                     padding: 3.5px 50px;
+                     letter-spacing: 4px;
+                     "
+                role="button" class="btn btn-info btn-lg " href="{% url 'createtodo' %}">Create New Todo</a>
+                
+            </div>
+            
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

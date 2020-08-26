@@ -1,0 +1,62 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5"
+        style="font-family: 'Roboto', sans-serif;
+        color: rgb(37, 34, 34);
+        letter-spacing: 3px;
+        "
+    >
+        <div class="col-md-5 signup__head">
+            <h3
+            style="font-size: xx-large;
+            font-weight: 1000;
+            text-align: center;
+            letter-spacing: 5px;
+            "
+            >Try Just Todo for free</h3>
+            <h2
+            style="text-align: center;"
+            >Sign Up now</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="username" aria-describedby="usernameHelp" required>
+                    <small id="usernameHelp" class="form-text text-muted">Choose a unique username. We'll let you know if it's taken</small>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" name="password1" class="form-control" id="password1" placeholder="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="password2" class="form-control" id="password2" placeholder="confirm password" required>
+                </div>
+                <div style="padding: 5px 0px 15px 0px; text-align: center;" class="terms">
+                    <small style="padding-bottom: 10px;" id="usernameHelp" class="form-text text-muted">By Signing up, I agree to the Just Todo <span style="text-decoration: underline;"> <a href="#" style="color:#17a2b8;">Terms of Services.</a></span></small>
+                    <button type="submit" class="btn btn-info btn-lg btn-block" >Try for free</button>
+                </div>
+                
+                
+            </form>
+            <hr>
+            <div class="text-center"
+            style="padding: 10px;
+                    margin: 5px;
+            "
+            >
+                Do you already have an account? <a href="{% url 'loginuser' %}" style="color: #17a2b8">Login here</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+<div class="container home">
+    <div class="container__head-home">
+        <h2>A better online to-do list app for <br> work</h2>
+    </div>
+
+    <div class="container__body-home">
+        <p> Just Todo makes it easier for a team to plan their work by <br> using online to-do lists.</p>
+    </div>
+    <div class="container__button-home">
+        <a role="button" class="btn btn-info btn-lg" href="{% url 'signupuser' %}">Sign Up</a>
+    </div>
+</div>
+
+<div class="row container medium-container" style="padding: 100px 0px 100px 0px;">
+    <div class="col col-md-5 txt">
+        <div style="font-family: 'Roboto', sans-serif;
+        color: rgb(88, 88, 88); font-weight: 700;">
+            <h4>A simple to-do list app that meets your team's needs <br></h4>
+        </div>
+        <div style="font-family: 'Roboto', sans-serif;
+        color: rgb(88, 88, 88); font-weight: 90; padding-bottom: 20px;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nobis et, vitae ex possimus, dicta quae aliquam, nostrum doloremque distinctio ipsa accusamus molestiae? Praesentium dolorem minus, officiis repellat dignissimos cumque.</p>
+        </div>
+        <div style="font-family: 'Roboto', sans-serif;
+        color: rgb(88, 88, 88); margin-bottom: 20px;">
+            <a role="button" class="btn btn-info btn-lg" href="#">Learn more</a>
+        </div>
+    </div>
+
+    <div class="col col-md-4 img">
+        <div class="img__body">
+            <img style="height: 300px; width: 500px; box-shadow: black; box-sizing: border-box;" src="https://luna1.co/2a0e29.png" alt="banner">
+        </div>
+    </div>
+</div>
+
+<div class="container bottom">
+    <div class="container__head-bottom">
+        <h2>Start Managing your team to-do <br> lists today</h2>
+    </div>
+    <div class="container__body-bottom">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci reprehenderit alias fuga quidem molestias blanditiis sunt quos impedit.Adipisci reprehenderit alias fuga quidem.</p>
+    </div>
+
+    
+    <div class="container__button-home">
+        <a role="button" class="btn btn-info btn-lg" href="{% url 'signupuser' %}">Sign Up</a>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
