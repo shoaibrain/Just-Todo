@@ -1,7 +1,6 @@
-# This is a simple Todo web App built using Django & Python
+# This is a simple Todo web App built using Django framework, Html & Bootstrap
 
-\_This is Django framework based web application with all basic functionality. It has a fully functional authentication system
-\_for registration
+\_This is Django framework based web application with all basic functionality. It has a fully functional authentication system and registration
 
 ![](https://github.com/sxr0012/Just-Todo/blob/master/thumbnails/Capture-1.JPG)
 ![](https://github.com/sxr0012/Just-Todo/blob/master/thumbnails/Capture-2.JPG)
